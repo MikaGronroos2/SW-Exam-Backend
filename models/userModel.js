@@ -14,6 +14,19 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  firstName: {
+    type: String,
+  },
+  lastName: {
+    type: String,
+  },
+  phoneNumber: {
+    type: String,
+  },
+  role: {
+    type: String,
+    default: "quest",
+  },
 });
 
 // static signup method

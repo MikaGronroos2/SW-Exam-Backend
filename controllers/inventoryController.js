@@ -41,15 +41,17 @@ const getInventoryById = async (req, res) => {
 
 // update a inventory record (PATCH)
 const updateInventory = async (req, res) => {
+  const id = req.params.id;
   try {
     const inventory = await Inventory.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      {
-        new: true,
-      }
+      id,
+      { ...req.body },
+      { new: true }
     );
-    res.status(200).json(inventory);
+
+    if (inventory) {
+      res.status(200).json(inventory);
+    }
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "Server error" });
